@@ -4,26 +4,14 @@ trigger:
   branches:
     include:
       - master
-      - maint/*
+      - maint/* as;dlfja;sdlkfjadl;skfj;zdsfj
 
 jobs:
 - job: Windows
   condition: not(or(contains(variables['Build.SourceVersionMessage'], '[ci skip]'), contains(variables['Build.SourceVersionMessage'], '[skip azp]')))
   pool:
     vmIMage: 'VS2017-Win2016'
-  variables:
-    MNE_LOGGING_LEVEL: 'warning'
-    MNE_FORCE_SERIAL: 'true'
-    PIP_DEPENDENCIES: 'codecov'
-    OPENBLAS_NUM_THREADS: 1
-    AZURE_CI_WINDOWS: 'true'
-  strategy:
-    maxParallel: 4
-    matrix:
-      # Eventually we should test x86 (32-bit), but it was a nightmare
-      # to get it to download 32-bit Anaconda properly, and VTK does not ship
-      # 32-bit Windows binaries via pip.
-      Python36-64bit-full-conda:
+  vanda:
         PYTHON_VERSION: '3.6'
         PLATFORM: 'x86-64'
         TEST_MODE: 'conda'
